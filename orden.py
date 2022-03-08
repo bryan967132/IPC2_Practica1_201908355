@@ -24,7 +24,7 @@ class Cola:
 
     def recorrer(self):
         if self.primero is None:
-            print('No hay órdenes')
+            print('No hay órdenes pendientes')
             return
         actual = self.primero
         while actual:
