@@ -22,6 +22,7 @@ class Menu:
                     limpiar.limpiarConsola()
                 elif opcion == 3:
                     limpiar.limpiarConsola()
+                    ordenes.entregarOrden()
                 elif opcion == 4:
                     limpiar.limpiarConsola()
                     ordenes.recorrer()
