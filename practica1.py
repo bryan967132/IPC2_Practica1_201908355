@@ -1,8 +1,3 @@
-#from menu import Menu
-from orden import Orden,Cola
-
-cola = Cola()
-nuevaOrden = Orden()
-
-#menu = Menu()
-#menu.menuP()
+from menu import Menu
+menu = Menu()
+menu.menuP()

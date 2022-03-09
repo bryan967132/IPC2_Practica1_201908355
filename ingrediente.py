@@ -17,6 +17,16 @@ class listaIngredientes:
             self.primero = Nodo(ingrediente = ingrediente)
             return
         actual = self.primero
-        while actual:
+        while actual.siguiente:
             actual = actual.siguiente
-        actual = Nodo(ingrediente = ingrediente)
+        actual.siguiente = Nodo(ingrediente = ingrediente)
+
+    def recorrer(self):
+        actual = self.primero
+        contador = 1
+        pizza = ''
+        while actual:
+            pizza += "{}. {:<11}".format(contador,actual.ingrediente.nombre)
+            contador += 1
+            actual = actual.siguiente
+        print(pizza)

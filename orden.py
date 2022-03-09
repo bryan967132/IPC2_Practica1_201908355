@@ -18,9 +18,9 @@ class Cola:
             self.primero = Nodo(orden = orden)
             return
         actual = self.primero
-        while actual:
+        while actual.siguiente:
             actual = actual.siguiente
-        actual = Nodo(orden)
+        actual.siguiente = Nodo(orden)
 
     def recorrer(self):
         if self.primero is None:
@@ -28,5 +28,6 @@ class Cola:
             return
         actual = self.primero
         while actual:
-            print(actual.orden.cliente,actual.orden.cantidad,actual.orden.pizzas)
+            print(actual.orden.cliente,actual.orden.cantidad)
+            actual.orden.pizzas.recorrer()
             actual = actual.siguiente
