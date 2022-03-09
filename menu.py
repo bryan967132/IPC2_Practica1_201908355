@@ -2,6 +2,7 @@ from orden import Orden,Cola
 from pizza import Pizza,listaPizzas
 from ingrediente import Ingrediente,listaIngredientes
 from limpiarConsola import Limpiar
+from datetime import datetime
 
 class Menu:
     def menuP(self):
@@ -14,7 +15,7 @@ class Menu:
                 self.opciones()
                 opcion = int(input('Opción: '))
                 if opcion == 1:
-                    ordenes.encolar(self.nuevaOrden())
+                    ordenes.nuevaOrden(self.nuevaOrden())
                     limpiar.limpiarConsola()
                     print('\nNueva Orden en Cola')
                 elif opcion == 2:
@@ -65,7 +66,9 @@ class Menu:
                 ingredientes.insertar(ingrediente)
             pizza = Pizza(ingredientes)
             pizzas.insertar(pizza)
-        return Orden(cliente,cantidad,pizzas)
+        hora = datetime.now().strftime('%H')
+        minuto = datetime.now().strftime('%M')
+        return Orden(cliente,cantidad,pizzas,hora,minuto)
         
     def opciones(self):
         print("""

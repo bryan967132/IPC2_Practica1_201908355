@@ -1,8 +1,10 @@
 class Orden:
-    def __init__(self,cliente,cantidad,pizzas):
+    def __init__(self,cliente,cantidad,pizzas,hora,minuto):
         self.cliente = cliente
         self.cantidad = cantidad
         self.pizzas = pizzas
+        self.hora = hora
+        self.minuto = minuto
 
 class Nodo:
     def __init__(self,orden = None,siguiente = None):
@@ -13,7 +15,7 @@ class Cola:
     def __init__(self):
         self.primero = None
     
-    def encolar(self,orden):
+    def nuevaOrden(self,orden):
         if self.primero is None:
             self.primero = Nodo(orden = orden)
             return
@@ -21,6 +23,18 @@ class Cola:
         while actual.siguiente:
             actual = actual.siguiente
         actual.siguiente = Nodo(orden)
+    
+    def entregarOrden(self):
+        if self.primero is None:
+            print("""
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║               No hay órdenes pendientes              ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝""")
+            return
+        actual = self.primero
+        self.primero = actual.siguiente
 
     def recorrer(self):
         if self.primero is None:
