@@ -7,22 +7,26 @@ class Orden:
         self.minuto = minuto
 
 class Nodo:
-    def __init__(self,orden = None,siguiente = None):
+    def __init__(self,orden = None,siguiente = None,anterior = None):
         self.orden = orden
         self.siguiente = siguiente
+        self.anterior = anterior
 
 class Cola:
     def __init__(self):
         self.primero = None
+        self.ultimo = None
     
     def nuevaOrden(self,orden):
         if self.primero is None:
             self.primero = Nodo(orden = orden)
+            self.ultimo = self.primero
             return
         actual = self.primero
         while actual.siguiente:
             actual = actual.siguiente
-        actual.siguiente = Nodo(orden)
+        self.ultimo = Nodo(orden = orden,anterior = self.ultimo)
+        actual.siguiente = self.ultimo
     
     def entregarOrden(self):
         if self.primero is None:
