@@ -15,6 +15,8 @@ class Menu:
                 opcion = int(input('Opción: '))
                 if opcion == 1:
                     ordenes.encolar(self.nuevaOrden())
+                    limpiar.limpiarConsola()
+                    print('\nNueva Orden en Cola')
                 elif opcion == 2:
                     limpiar.limpiarConsola()
                 elif opcion == 3:
@@ -44,21 +46,21 @@ class Menu:
         pizzas = listaPizzas()
         for i in range(cantidad):
             ingredientes = listaIngredientes()
-            print('Pizza',i + 1)
+            print('\nPizza',i + 1)
             print('Marque con una X si desea el ingrediente')
-            if input('1. Pepperoni: ').upper() == 'X':
+            if input('1. Pepperoni (3 min): ').upper() == 'X':
                 ingrediente = Ingrediente('Pepperoni',3)
                 ingredientes.insertar(ingrediente)
-            if input('2. Salchicha: ').upper()== 'X':
+            if input('2. Salchicha (4 min): ').upper() == 'X':
                 ingrediente = Ingrediente('Salchicha',4)
                 ingredientes.insertar(ingrediente)
-            if input('3. Carne: ').upper()== 'X':
+            if input('3. Carne (10 min): ').upper() == 'X':
                 ingrediente = Ingrediente('Carne',10)
                 ingredientes.insertar(ingrediente)
-            if input('4. Queso: ').upper()== 'X':
+            if input('4. Queso (5 min): ').upper() == 'X':
                 ingrediente = Ingrediente('Queso',5)
                 ingredientes.insertar(ingrediente)
-            if input('5. Piña: ').upper()== 'X':
+            if input('5. Piña (2 min): ').upper() == 'X':
                 ingrediente = Ingrediente('Piña',2)
                 ingredientes.insertar(ingrediente)
             pizza = Pizza(ingredientes)

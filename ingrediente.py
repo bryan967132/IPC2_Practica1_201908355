@@ -24,9 +24,32 @@ class listaIngredientes:
     def recorrer(self):
         actual = self.primero
         contador = 1
-        pizza = ''
+        pizza = '║    ➤   '
         while actual:
             pizza += "{}. {:<11}".format(contador,actual.ingrediente.nombre)
+            if contador == 3 and actual.siguiente:
+                espacios = ''
+                for i in range(55 - len(pizza)):
+                    espacios += ' '
+                pizza += espacios + '║\n║        '
+            if contador <= 3 and actual.siguiente is None:
+                espacios = ''
+                for i in range(55 - len(pizza)):
+                    espacios += ' '
+                pizza += espacios + '║'
+            if contador > 3 and actual.siguiente is None:
+                espacios = ''
+                for i in range(112 - len(pizza)):
+                    espacios += ' '
+                pizza += espacios + '║'
             contador += 1
             actual = actual.siguiente
         print(pizza)
+    
+    def getTiempo(self):
+        actual = self.primero
+        tiempo = 0
+        while actual:
+            tiempo += actual.ingrediente.tiempo
+            actual = actual.siguiente
+        return tiempo

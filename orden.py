@@ -24,10 +24,34 @@ class Cola:
 
     def recorrer(self):
         if self.primero is None:
-            print('No hay órdenes pendientes')
+            print("""
+╔══════════════════════════════════════════════════════╗
+║                                                      ║
+║               No hay órdenes pendientes              ║
+║                                                      ║
+╚══════════════════════════════════════════════════════╝""")
             return
         actual = self.primero
+        print('\n╔══════════════════════════════════════════════════════╗')
+        print('║                                                      ║')
+        print('║                   Órdenes En Cola                    ║')
+        print('║                                                      ║')
+        print('╠══════════════════════════════════════════════════════╣')
         while actual:
-            print(actual.orden.cliente,actual.orden.cantidad)
+            print('║                                                      ║')
+            espacios = ''
+            cliente = actual.orden.cliente
+            for i in range(26 - len(cliente)):
+                espacios += ' '
+            espacios1 = ''
+            tiempo = 'En: ' + str(actual.orden.pizzas.getTiempo()) + ' min'
+            for i in range(16 - len(tiempo)):
+                espacios1 += ' '
+            print('║       ',actual.orden.cliente,espacios,tiempo,espacios1,"║")
+            print('║                                                      ║')
             actual.orden.pizzas.recorrer()
+            print('║                                                      ║')
+            if actual.siguiente is not None:
+                print('╠══════════════════════════════════════════════════════╣')
             actual = actual.siguiente
+        print('╚══════════════════════════════════════════════════════╝')

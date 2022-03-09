@@ -25,3 +25,11 @@ class listaPizzas:
         while actual:
             actual.pizza.ingredientes.recorrer()
             actual = actual.siguiente
+    
+    def getTiempo(self):
+        actual = self.primero
+        tiempo = 0
+        while actual:
+            tiempo += actual.pizza.ingredientes.getTiempo()
+            actual = actual.siguiente
+        return tiempo
