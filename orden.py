@@ -93,7 +93,7 @@ class Cola:
             actual = self.ultimo
             while actual:
                 colatxt += """
-                        <td style="rounded" bgcolor = "white" height = "100" width = "60">No. """ + str(actual.orden.numero) + """<br/> """ + actual.orden.cliente + """<br/>""" + str(actual.orden.cantidad) + """ Pizzas</td>"""
+                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No. """ + str(actual.orden.numero) + """<br/>""" + actual.orden.cliente + """<br/>""" + str(actual.orden.cantidad) + """ Pizzas</td>"""
                 actual = actual.anterior
         else:
             colatxt += """
