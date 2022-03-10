@@ -1,0 +1,16 @@
+digraph {
+    node [shape = none]
+    rankdir=DOWN;
+    cola[
+        label=<
+            <table border="0" cellborder="1" cellspacing="5" cellpadding="4">
+                <tr>
+                    <td bgcolor = "white" height = "100" width = "60">Cliente4</td>
+                    <td bgcolor = "white" height = "100" width = "60">Cliente3</td>
+                    <td bgcolor = "white" height = "100" width = "60">Cliente2</td>
+                    <td bgcolor = "white" height = "100" width = "60">Cliente1</td>
+                </tr>
+            </table>
+        >
+    ];
+}

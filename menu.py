@@ -15,7 +15,7 @@ class Menu:
                 self.opciones()
                 opcion = int(input('Opción: '))
                 if opcion == 1:
-                    ordenes.nuevaOrden(self.nuevaOrden())
+                    ordenes.nuevaOrden(self.nuevaOrden(ordenes))
                     limpiar.limpiarConsola()
                     print('\nNueva Orden en Cola')
                 elif opcion == 2:
@@ -38,7 +38,7 @@ class Menu:
                 limpiar.limpiarConsola()
                 print('\nOpción inválida')
 
-    def nuevaOrden(self):
+    def nuevaOrden(self,ordenes):
         print('\nNueva Orden')
         cliente = input('Ingrese el nombre del cliente: ')
         cantidad = input('Ingrese la cantidad de pizzas: ')
@@ -69,7 +69,7 @@ class Menu:
             pizzas.insertar(pizza)
         hora = datetime.now().strftime('%H')
         minuto = datetime.now().strftime('%M')
-        return Orden(cliente,cantidad,pizzas,hora,minuto)
+        return Orden(ordenes.getNumero(),cliente,cantidad,pizzas,hora,minuto)
         
     def opciones(self):
         print("""

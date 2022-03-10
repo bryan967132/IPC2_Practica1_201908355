@@ -29,7 +29,7 @@ pizzas.insertar(pizza)
 
 hora = datetime.now().strftime('%H')
 minuto = datetime.now().strftime('%M')
-nuevaOrden = Orden('Brandon',2,pizzas,hora,minuto)
+nuevaOrden = Orden(cola.getNumero(),'Brandon',2,pizzas,hora,minuto)
 cola.nuevaOrden(nuevaOrden)
 
 pizzas = listaPizzas()
@@ -54,7 +54,7 @@ pizzas.insertar(pizza)
 
 hora = datetime.now().strftime('%H')
 minuto = datetime.now().strftime('%M')
-nuevaOrden = Orden('Keneth',2,pizzas,hora,minuto)
+nuevaOrden = Orden(cola.getNumero(),'Keneth',2,pizzas,hora,minuto)
 cola.nuevaOrden(nuevaOrden)
 
 pizzas = listaPizzas()
@@ -105,23 +105,23 @@ pizzas.insertar(pizza)
 
 hora = datetime.now().strftime('%H')
 minuto = datetime.now().strftime('%M')
-nuevaOrden = Orden('Danny',2,pizzas,hora,minuto)
+nuevaOrden = Orden(cola.getNumero(),'Danny',2,pizzas,hora,minuto)
 cola.nuevaOrden(nuevaOrden)
 
 cola.recorrer()
 
 cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
