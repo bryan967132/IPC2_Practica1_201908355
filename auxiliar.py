@@ -108,22 +108,22 @@ minuto = datetime.now().strftime('%M')
 nuevaOrden = Orden(cola.getNumero(),'Danny',4,pizzas,hora,minuto)
 cola.nuevaOrden(nuevaOrden)
 
-cola.dibujar()
+#cola.dibujar()
 
 cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
 
-cola.entregarOrden()
+#cola.entregarOrden()
 
-cola.recorrer()
+#cola.recorrer()
