@@ -1,3 +1,5 @@
+import os
+import webbrowser
 class Orden:
     def __init__(self,numero,cliente,cantidad,pizzas,hora,minuto):
         self.numero = numero
@@ -61,14 +63,52 @@ class Cola:
         print('╠══════════════════════════════════════════════════════╣')
         print('║                                                      ║')
         espacios = ''
-        tiempo = 'Preparación: ' + str(actual.orden.pizzas.getTiempo()) + ' min'
+        tiempo = 'Preparación: {:<10} Espera: {} '.format(str(actual.orden.pizzas.getTiempo()) + ' min',str(actual.orden.pizzas.getTiempo()) + ' min')
         for i in range(48 - len(tiempo)):
             espacios += ' '
         print('║   ',tiempo,espacios,'║')
         print('║                                                      ║')
         print('╚══════════════════════════════════════════════════════╝')
 
+        primero = actual
         self.primero = actual.siguiente
+
+        if self.ultimo.orden.numero == primero.orden.numero:
+            self.ultimo = None
+            return
+        actual = self.ultimo
+        while actual.anterior and actual.anterior.orden.numero != primero.orden.numero:
+            actual = actual.anterior
+        actual.anterior = None
+    
+    def dibujar(self):
+        colatxt = """digraph {
+    node [shape = none]
+    rankdir=DOWN;
+    cola[
+        label=<
+            <table border="0" cellborder="1" cellspacing="5" cellpadding="4">
+                <tr>"""
+        if self.ultimo is not None:
+            actual = self.ultimo
+            while actual:
+                colatxt += """
+                        <td style="rounded" bgcolor = "white" height = "100" width = "60">No. """ + str(actual.orden.numero) + """<br/> """ + actual.orden.cliente + """<br/>""" + str(actual.orden.cantidad) + """ Pizzas</td>"""
+                actual = actual.anterior
+        else:
+            colatxt += """
+                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No hay<br/>ordenes<br/>pendientes</td>"""
+        colatxt += """
+                </tr>
+            </table>
+        >
+    ];
+}"""
+        with open('Archivos/Cola.txt','w') as cola:
+            cola.write(colatxt)
+        os.system('circo -Tpdf Archivos/Cola.txt -o Cola.pdf')
+        webbrowser.open('Cola.pdf')
+        
 
     def recorrer(self):
         if self.primero is None:

@@ -16,13 +16,16 @@ class Menu:
                 opcion = int(input('Opción: '))
                 if opcion == 1:
                     ordenes.nuevaOrden(self.nuevaOrden(ordenes))
+                    ordenes.dibujar()
                     limpiar.limpiarConsola()
                     print('\nNueva Orden en Cola')
                 elif opcion == 2:
                     limpiar.limpiarConsola()
+                    ordenes.dibujar()
                 elif opcion == 3:
                     limpiar.limpiarConsola()
                     ordenes.entregarOrden()
+                    ordenes.dibujar()
                 elif opcion == 4:
                     limpiar.limpiarConsola()
                     ordenes.recorrer()

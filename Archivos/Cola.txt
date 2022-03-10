@@ -1,16 +1,13 @@
-class dibujar:
-    def dibujar(self):
-        cola = """digraph {
+digraph {
     node [shape = none]
     rankdir=DOWN;
     cola[
         label=<
             <table border="0" cellborder="1" cellspacing="5" cellpadding="4">
-                <tr>"""
-        
-        cola += """
+                <tr>
+                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No hay<br/>ordenes<br/>pendientes</td>
                 </tr>
             </table>
         >
     ];
-}"""
+}
