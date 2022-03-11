@@ -99,7 +99,7 @@ class Cola:
     
     def dibujar(self):
         colatxt = """digraph {
-    node [shape = none]
+    node [shape = none fontcolor="#0060B2"]
     rankdir=DOWN;
     cola[
         label=<
@@ -109,11 +109,11 @@ class Cola:
             actual = self.ultimo
             while actual:
                 colatxt += """
-                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No. """ + str(actual.orden.numero) + """<br/>""" + actual.orden.cliente + """<br/>""" + str(actual.orden.cantidad) + """ Pizzas</td>"""
+                    <td style="rounded" color="#0060B2" bgcolor = "white" height = "100" width = "60">No. """ + str(actual.orden.numero) + """<br/>""" + actual.orden.cliente + """<br/>""" + str(actual.orden.cantidad) + """ Pizzas</td>"""
                 actual = actual.anterior
         else:
             colatxt += """
-                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No hay<br/>ordenes<br/>pendientes</td>"""
+                    <td style="rounded" color="#0060B2" bgcolor = "white" height = "100" width = "60">No hay<br/>ordenes<br/>pendientes</td>"""
         colatxt += """
                 </tr>
             </table>

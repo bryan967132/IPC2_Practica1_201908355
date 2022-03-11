@@ -11,7 +11,7 @@ class Menu:
         opcion = 0
         ordenes = Cola()
         while opcion != 6:
-            #try:
+            try:
                 self.opciones()
                 opcion = int(input('Opción: '))
                 if opcion == 1:
@@ -37,9 +37,9 @@ class Menu:
                 else:
                     limpiar.limpiarConsola()
                     print('\nSolo números entre 1 y 6')
-            #except:
-            #    limpiar.limpiarConsola()
-            #    print('\nOpción inválida')
+            except:
+                limpiar.limpiarConsola()
+                print('\nOpción inválida')
 
     def nuevaOrden(self,ordenes):
         print('\nNueva Orden')
