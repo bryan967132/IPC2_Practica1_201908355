@@ -5,9 +5,7 @@ digraph {
         label=<
             <table border="0" cellborder="1" cellspacing="5" cellpadding="4">
                 <tr>
-                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No. 3<br/>Danny<br/>4 Pizzas</td>
-                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No. 2<br/>Keneth<br/>2 Pizzas</td>
-                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No. 1<br/>Brandon<br/>2 Pizzas</td>
+                    <td style="rounded" bgcolor = "white" height = "100" width = "60">No hay<br/>ordenes<br/>pendientes</td>
                 </tr>
             </table>
         >

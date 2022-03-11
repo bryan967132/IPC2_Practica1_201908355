@@ -1,13 +1,14 @@
 import os
 import webbrowser
 class Orden:
-    def __init__(self,numero,cliente,cantidad,pizzas,hora,minuto):
+    def __init__(self,numero,cliente,cantidad,pizzas,hora,minuto,espera = None):
         self.numero = numero
         self.cliente = cliente
         self.cantidad = cantidad
         self.pizzas = pizzas
         self.hora = hora
         self.minuto = minuto
+        self.espera = espera
 
 class Nodo:
     def __init__(self,orden = None,siguiente = None,anterior = None):
@@ -28,14 +29,22 @@ class Cola:
         if self.primero is None:
             self.primero = Nodo(orden = orden)
             self.ultimo = self.primero
+            self.primero.orden.espera = 0
             self.numero += 1
             return
         actual = self.primero
         while actual.siguiente:
             actual = actual.siguiente
         self.ultimo = Nodo(orden = orden,anterior = self.ultimo)
+        if self.getMinDif(actual.orden.hora,actual.orden.minuto,self.ultimo.orden.hora,self.ultimo.orden.minuto) > actual.orden.pizzas.getTiempo() + actual.orden.espera:
+            self.ultimo.orden.espera = 0
+        else:
+            self.ultimo.orden.espera = actual.orden.pizzas.getTiempo() + actual.orden.espera - self.getMinDif(actual.orden.hora,actual.orden.minuto,self.ultimo.orden.hora,self.ultimo.orden.minuto)
         actual.siguiente = self.ultimo
         self.numero += 1
+
+    def getMinDif(self,horaI,minutoI,horaF,minutoF):
+        return (int(horaF) - int(horaI)) * 60 + int(minutoF) - int(minutoI)
     
     def entregarOrden(self):
         if self.primero is None:
@@ -58,12 +67,19 @@ class Cola:
         for i in range(48 - len(detalles)):
             espacios += ' '
         print('║   ',detalles,espacios,'║')
+        espacios = ''
+        hora = '{:<9}Hora: {}:{}'.format('',actual.orden.hora,actual.orden.minuto)
+        for i in range(48 - len(hora)):
+            espacios += ' '
+        print('║   ',hora,espacios,'║')
         print('║                                                      ║')
         actual.orden.pizzas.recorrer()
+        print('║                                                      ║')
         print('╠══════════════════════════════════════════════════════╣')
         print('║                                                      ║')
         espacios = ''
-        tiempo = 'Preparación: {:<10} Espera: {} '.format(str(actual.orden.pizzas.getTiempo()) + ' min',str(actual.orden.pizzas.getTiempo()) + ' min')
+        
+        tiempo = 'Preparación: {:<10} En Cola: {} '.format(str(actual.orden.pizzas.getTiempo()) + ' min',str(actual.orden.espera) + ' min')
         for i in range(48 - len(tiempo)):
             espacios += ' '
         print('║   ',tiempo,espacios,'║')
@@ -132,6 +148,11 @@ class Cola:
             for i in range(48 - len(detalles)):
                 espacios += ' '
             print('║   ',detalles,espacios,"║")
+            espacios = ''
+            hora = '{:<9}Hora: {}:{}'.format('',actual.orden.hora,actual.orden.minuto)
+            for i in range(48 - len(hora)):
+                espacios += ' '
+            print('║   ',hora,espacios,'║')
             print('║                                                      ║')
             actual.orden.pizzas.recorrer()
             print('║                                                      ║')
